@@ -38,14 +38,17 @@ public class EnemyAI : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange)
         {
             Patroling();
+            Debug.Log("Patroling");
         }
         if (playerInSightRange && !playerInAttackRange)
         {
             ChasePlayer();
+            Debug.Log("Chasing");
         }
         if (playerInSightRange && playerInAttackRange)
         {
             AttackPlayer();
+            Debug.Log("Attacking");
         }
     }
 
@@ -65,6 +68,7 @@ public class EnemyAI : MonoBehaviour
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
         {
+            Debug.Log("Searching for new patrol point");
             walkPointSet = false;
         }
     }
@@ -78,6 +82,7 @@ public class EnemyAI : MonoBehaviour
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
         {
+            Debug.Log("Walkpoint is true");
             walkPointSet = true;
         }
 
