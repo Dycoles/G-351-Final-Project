@@ -24,6 +24,9 @@ public class dragonPatrol : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    // AudioSource for the dragon's roar
+    public AudioSource audioSource;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -45,7 +48,7 @@ public class dragonPatrol : MonoBehaviour
             // play wake up animation
             // roar
             // play roar sound
-
+            Roar();
             Debug.Log("Roaring");
         }
         if (playerInSightRange && playerInAttackRange)
@@ -54,7 +57,16 @@ public class dragonPatrol : MonoBehaviour
             Debug.Log("Attacking");
         }
     }
-
+    
+    // playing roaring sound
+    private void Roar()
+    {
+        if (audioSource != null && !audioSource.isPlaying)
+        {
+            // Play the roar sound
+            audioSource.Play();
+        }
+    }
 
 
     private void AttackPlayer()
