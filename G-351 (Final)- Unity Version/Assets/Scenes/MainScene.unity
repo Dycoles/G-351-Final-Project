@@ -1262,14 +1262,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: -0.28916195, y: 0.103006154, z: -0.031313337, w: -0.95120686}
-  m_LocalPosition: {x: -0.38, y: 2.648, z: -3.201}
+  m_LocalRotation: {x: -0.283215, y: 0.10280855, z: -0.03195613, w: -0.9529945}
+  m_LocalPosition: {x: -0.38000488, y: 2.74, z: -3.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 371274316}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 33.818, y: -372.361, z: 0}
+  m_LocalEulerAnglesHint: {x: 33.119, y: -372.26, z: 0.183}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2754,20 +2754,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3106623196a769643b02a931cb1eb152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  player: {fileID: 0}
+  agent: {fileID: 635404411}
+  player: {fileID: 1331665349}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
-  health: 0
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
+    m_Bits: 64
+  health: 100
   timeBetweenAttacks: 0
-  sightRange: 0
-  attackRange: 0
+  sightRange: 20
+  attackRange: 6
   playerInSightRange: 0
   playerInAttackRange: 0
   audioSource: {fileID: 635404409}
@@ -2865,9 +2863,40 @@ AudioSource:
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.16949153
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!195 &635404411
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635404406}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &642781700
 PrefabInstance:
   m_ObjectHideFlags: 0

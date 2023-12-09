@@ -7,11 +7,9 @@ public class dragonPatrol : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public float health;
+    bool roar = true;
 
-    // Patroling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    private Animator mAnimator;
 
     // Attacking
     public float timeBetweenAttacks;
@@ -31,6 +29,7 @@ public class dragonPatrol : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        mAnimator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -50,6 +49,7 @@ public class dragonPatrol : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange && playerWithinSoundDistance)
         {
             // play wake up animation
+            mAnimator.SetTrigger("Roar");
             // roar
             // play roar sound
             Roar();
@@ -57,6 +57,7 @@ public class dragonPatrol : MonoBehaviour
         }
         if (playerInSightRange && playerInAttackRange)
         {
+            mAnimator.SetTrigger("Attack");
             AttackPlayer();
             Debug.Log("Attacking");
         }
@@ -68,7 +69,11 @@ public class dragonPatrol : MonoBehaviour
         if (audioSource != null && !audioSource.isPlaying)
         {
             // Play the roar sound
-            audioSource.Play();
+            if (roar == true)
+            {
+                audioSource.Play();
+                roar = false;
+            }
             Debug.Log("Roar sound played");
         }
     }
