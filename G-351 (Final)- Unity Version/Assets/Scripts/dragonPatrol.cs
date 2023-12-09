@@ -1,31 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class dragonPatrol : MonoBehaviour
 {
-    // Start is called before the first frame update
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public float health;
 
-    //Patroling
+    // Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
-    //Attacking
+    // Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
 
-    //States
+    // States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
     // AudioSource for the dragon's roar
     public AudioSource audioSource;
+
+    // Sound trigger distance
+    public float soundTriggerDistance = 5f;
 
     private void Awake()
     {
@@ -38,12 +38,16 @@ public class dragonPatrol : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
+        // Check if the player is within the specified distance
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        bool playerWithinSoundDistance = distanceToPlayer <= soundTriggerDistance;
+
         if (!playerInSightRange && !playerInAttackRange)
         {
             // loop sleeping noise
             Debug.Log("Sleeping");
         }
-        if (playerInSightRange && !playerInAttackRange)
+        if (playerInSightRange && !playerInAttackRange && playerWithinSoundDistance)
         {
             // play wake up animation
             // roar
@@ -57,21 +61,21 @@ public class dragonPatrol : MonoBehaviour
             Debug.Log("Attacking");
         }
     }
-    
-    // playing roaring sound
+
+    // Playing roaring sound
     private void Roar()
     {
         if (audioSource != null && !audioSource.isPlaying)
         {
             // Play the roar sound
             audioSource.Play();
+            Debug.Log("Roar sound played");
         }
     }
 
-
     private void AttackPlayer()
     {
-        //Make sure enemy doesn't move
+        // Make sure enemy doesn't move
         agent.SetDestination(transform.position);
         transform.LookAt(player);
 
@@ -96,11 +100,11 @@ public class dragonPatrol : MonoBehaviour
 
         if (health <= 0)
         {
-            Invoke(nameof(DestroyEnemey), 2f);
+            Invoke(nameof(DestroyEnemy), 2f);
         }
     }
 
-    private void DestroyEnemey()
+    private void DestroyEnemy()
     {
         Destroy(gameObject);
     }
