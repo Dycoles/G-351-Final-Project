@@ -55,7 +55,7 @@ public class MovementDragon : MonoBehaviour
     {
         Vector3 input = new Vector3(0, Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        if (input.magnitude > 0.001 && !animController.GetBool("Crouch"))
+        if (input.magnitude > 0.001)
         {
             rigidBody.AddRelativeTorque(new Vector3(0, input.y * impulseTorque * Time.deltaTime, 0));
             rigidBody.AddRelativeForce(new Vector3(0, 0, input.z * impulseForce * Time.deltaTime));
@@ -65,12 +65,6 @@ public class MovementDragon : MonoBehaviour
         else
         {
             animController.SetBool("Move", false);
-
-            if (Input.GetKey(KeyCode.F) && Time.time - lastShotTime >= shootingCooldown)
-            {
-                Shoot();
-                lastShotTime = Time.time;
-            }
         }
     }
 
