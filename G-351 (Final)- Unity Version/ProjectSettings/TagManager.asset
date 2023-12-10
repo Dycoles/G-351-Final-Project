@@ -14,9 +14,9 @@ TagManager:
   - WhatIsPlayer
   - WhatIsGround
   - camera
-  - 
-  - 
-  - 
+  - walls
+  - trees
+  - Physical Obstacles
   - 
   - 
   - 
