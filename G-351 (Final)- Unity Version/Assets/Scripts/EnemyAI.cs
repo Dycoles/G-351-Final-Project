@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public float health;
+    private Animator mAnimator;
 
     //Patroling
     public Vector3 walkPoint;
@@ -28,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        mAnimator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -48,6 +50,7 @@ public class EnemyAI : MonoBehaviour
         if (playerInSightRange && playerInAttackRange)
         {
             AttackPlayer();
+            mAnimator.SetTrigger("Attack");
             Debug.Log("Attacking");
         }
     }
