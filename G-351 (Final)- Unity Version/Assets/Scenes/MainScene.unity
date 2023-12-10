@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1459,6 +1459,59 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 372572074}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &375362016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2247168222010617711, guid: 21bfb19690b5ae0418a5a7ffa697d60d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1690564293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &375362017
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375362016}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0010bdc8b6379b84f8a8af82e5ee8297, type: 3}
+  m_Controller: {fileID: 9100000, guid: ccf4981bba298044cb8cba8aad32fc5c, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &375362018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375362016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32404e05fe538441d80f6aa22153f334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  rotationSpeed: 75
+--- !u!135 &375362020
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375362016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &394472226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7048,44 +7101,14 @@ GameObject:
   - component: {fileID: 1331665349}
   - component: {fileID: 1331665348}
   - component: {fileID: 1331665347}
-  - component: {fileID: 1331665346}
-  - component: {fileID: 1331665345}
   - component: {fileID: 1331665350}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1331665345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331665344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32404e05fe538441d80f6aa22153f334, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 15
-  turning: 45
-  cameraObject: {fileID: 0}
---- !u!65 &1331665346
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331665344}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1331665347
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7143,35 +7166,27 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331665344}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 248.37364, y: 50.567, z: 123.82}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.023635864, y: 0.576149, z: 0.11138153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 371274316}
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Children: []
+  m_Father: {fileID: 371274316}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1331665350
-Animator:
-  serializedVersion: 4
+--- !u!65 &1331665350
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331665344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0010bdc8b6379b84f8a8af82e5ee8297, type: 3}
-  m_Controller: {fileID: 9100000, guid: ccf4981bba298044cb8cba8aad32fc5c, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: -0.2645054, z: 0}
 --- !u!1001 &1340979938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8669,27 +8684,27 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1331665349}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1469399687890826709, guid: 21bfb19690b5ae0418a5a7ffa697d60d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1469399687890826709, guid: 21bfb19690b5ae0418a5a7ffa697d60d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.023635864
+      value: 248.35
       objectReference: {fileID: 0}
     - target: {fileID: 1469399687890826709, guid: 21bfb19690b5ae0418a5a7ffa697d60d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.576149
+      value: 49.990852
       objectReference: {fileID: 0}
     - target: {fileID: 1469399687890826709, guid: 21bfb19690b5ae0418a5a7ffa697d60d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.11138153
+      value: 123.70862
       objectReference: {fileID: 0}
     - target: {fileID: 1469399687890826709, guid: 21bfb19690b5ae0418a5a7ffa697d60d,
         type: 3}
