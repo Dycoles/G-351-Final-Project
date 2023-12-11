@@ -14,8 +14,16 @@ public class Character : MonoBehaviour
     public Character opp;
     public GameObject me;
     public HealthBar healthBar;
-
+    
+    // added by Jennifer
+    AudioManager audioManager;
+    
     private bool inCombat = false;
+    
+    // added by Jennifer
+    private void Awake() {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +39,9 @@ public class Character : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1)){
             if(state == BattleState.PLAYERTURN){
+                //change JGG
+                audioManager.PlaySFX(audioManager.corgiScratch);
+                
                 Debug.Log("SCRATCH");
                 Debug.Log(opp.health());
                 opp.damagePlayer(3);
