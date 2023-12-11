@@ -13,6 +13,7 @@ public class Character : MonoBehaviour
     public BattleState state = BattleState.OVERWORLD;
     public Character opp;
     public GameObject me;
+    public HealthBar healthBar;
 
     private bool inCombat = false;
 
@@ -21,6 +22,8 @@ public class Character : MonoBehaviour
     {
         currentHealth = 10;
         HUDElement.SetActive(false);
+        
+        healthBar.SetMaxHealth(currentHealth);
     }
 
     // Update is called once per frame
@@ -108,9 +111,13 @@ public class Character : MonoBehaviour
 
     public void damagePlayer(int damage){
         currentHealth -= damage;
+
+        healthBar.SetHealth(currentHealth);
     }
     public void healPlayer(int damage){
         currentHealth += damage;
+
+        healthBar.SetHealth(currentHealth);
     }
 
     public int health(){
