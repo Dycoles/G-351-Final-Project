@@ -41,7 +41,7 @@ public class Character : MonoBehaviour
             if(state == BattleState.PLAYERTURN){
                 //change JGG
                 audioManager.PlaySFX(audioManager.corgiScratch);
-                
+
                 Debug.Log("SCRATCH");
                 Debug.Log(opp.health());
                 opp.damagePlayer(3);
@@ -55,6 +55,8 @@ public class Character : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Alpha2)){
             if(state == BattleState.PLAYERTURN){
+                //change JGG
+                audioManager.PlaySFX(audioManager.corgiBite);
                 Debug.Log("BITE");
                 Debug.Log(opp.health());
                 opp.damagePlayer(5);
@@ -68,6 +70,8 @@ public class Character : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Alpha3)){
             if(state == BattleState.PLAYERTURN){
+                //change JGG
+                audioManager.PlaySFX(audioManager.corgiHeal);
                 Debug.Log("HEAL");
                 Debug.Log(opp.health());
                 this.healPlayer(2);
@@ -81,6 +85,8 @@ public class Character : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Alpha4)){
             if(state == BattleState.PLAYERTURN){
+                //change JGG
+                //audioManager.PlaySFX(audioManager.corgiRun);
                 Debug.Log("RUN");
                 Debug.Log(opp.health());
                 opp.GetComponent<EnemyAI>().isInCombat(false);
