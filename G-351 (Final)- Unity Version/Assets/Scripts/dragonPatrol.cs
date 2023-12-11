@@ -44,7 +44,7 @@ public class dragonPatrol : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange)
         {
             // loop sleeping noise
-            // Debug.Log("Sleeping");
+            Debug.Log("Sleeping");
         }
         if (playerInSightRange && !playerInAttackRange && playerWithinSoundDistance)
         {
@@ -53,13 +53,13 @@ public class dragonPatrol : MonoBehaviour
             // roar
             // play roar sound
             Roar();
-            // Debug.Log("Roaring");
+            Debug.Log("Roaring");
         }
         if (playerInSightRange && playerInAttackRange)
         {
             mAnimator.SetTrigger("Attack");
             AttackPlayer();
-            // Debug.Log("Attacking");
+            Debug.Log("Attacking");
         }
     }
 
@@ -74,7 +74,7 @@ public class dragonPatrol : MonoBehaviour
                 audioSource.Play();
                 roar = false;
             }
-            // Debug.Log("Roar sound played");
+            Debug.Log("Roar sound played");
         }
     }
 
