@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
     public float health;
     private Animator mAnimator;
+    public bool inCombat;
 
     //Patroling
     public Vector3 walkPoint;
@@ -25,6 +26,10 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    private void Start(){
+        inCombat = false;
+    }
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -37,22 +42,31 @@ public class EnemyAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
+        if(inCombat){
+            return;
+        }
         if (!playerInSightRange && !playerInAttackRange)
         {
             Patroling();
-            Debug.Log("Patroling");
+            // Debug.Log("Patroling");
         }
         if (playerInSightRange && !playerInAttackRange)
         {
             ChasePlayer();
-            Debug.Log("Chasing");
+            // Debug.Log("Chasing");
         }
         if (playerInSightRange && playerInAttackRange)
         {
             AttackPlayer();
             mAnimator.SetTrigger("Attack");
-            Debug.Log("Attacking");
+            // Debug.Log("Attacking");
         }
+    }
+
+    public bool isInCombat(bool isIn){
+        inCombat = isIn;
+        Debug.Log("Enemy is in combat");
+        return inCombat;
     }
 
     private void Patroling()
@@ -71,7 +85,7 @@ public class EnemyAI : MonoBehaviour
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
         {
-            Debug.Log("Searching for new patrol point");
+            // Debug.Log("Searching for new patrol point");
             walkPointSet = false;
         }
     }
@@ -85,7 +99,7 @@ public class EnemyAI : MonoBehaviour
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
         {
-            Debug.Log("Walkpoint is true");
+            // Debug.Log("Walkpoint is true");
             walkPointSet = true;
         }
 

@@ -13,6 +13,8 @@ public class MovementDragon : MonoBehaviour
 
     public AudioClip footstepSound; 
 
+    private bool inCombat = false;
+
     // Variable to check if the corgi is moving
     private bool isMoving = false;
 
@@ -30,7 +32,7 @@ public class MovementDragon : MonoBehaviour
         Vector3 input = new Vector3(0, Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         bool isCurrentlyMoving = input.magnitude > 0.001;
 
-        if (isCurrentlyMoving)
+        if (isCurrentlyMoving && !inCombat)
         {
             rigidBody.AddRelativeTorque(new Vector3(0, input.y * impulseTorque * Time.deltaTime, 0));
             rigidBody.AddRelativeForce(new Vector3(0, 0, input.z * impulseForce * Time.deltaTime));
@@ -80,5 +82,13 @@ public class MovementDragon : MonoBehaviour
         {
             audioSource.Stop();
         }
+    }
+
+    public void isInCombat(bool isIn){
+        inCombat = isIn;
+    }
+
+    public void moveBack(){
+        transform.Translate(Vector3.back * 5 * Time.deltaTime);
     }
 }
