@@ -14,8 +14,16 @@ public class Character : MonoBehaviour
     public Character opp;
     public GameObject me;
     public HealthBar healthBar;
-
+    
+    // added by Jennifer
+    AudioManager audioManager;
+    
     private bool inCombat = false;
+    
+    // added by Jennifer
+    private void Awake() {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +39,9 @@ public class Character : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1)){
             if(state == BattleState.PLAYERTURN){
+                //change JGG
+                audioManager.PlaySFX(audioManager.corgiScratch);
+
                 Debug.Log("SCRATCH");
                 Debug.Log(opp.health());
                 opp.damagePlayer(3);
@@ -44,6 +55,8 @@ public class Character : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Alpha2)){
             if(state == BattleState.PLAYERTURN){
+                //change JGG
+                audioManager.PlaySFX(audioManager.corgiBite);
                 Debug.Log("BITE");
                 Debug.Log(opp.health());
                 opp.damagePlayer(5);
@@ -57,6 +70,8 @@ public class Character : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Alpha3)){
             if(state == BattleState.PLAYERTURN){
+                //change JGG
+                audioManager.PlaySFX(audioManager.corgiHeal);
                 Debug.Log("HEAL");
                 Debug.Log(opp.health());
                 this.healPlayer(2);
@@ -70,6 +85,8 @@ public class Character : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Alpha4)){
             if(state == BattleState.PLAYERTURN){
+                //change JGG
+                //audioManager.PlaySFX(audioManager.corgiRun);
                 Debug.Log("RUN");
                 Debug.Log(opp.health());
                 opp.GetComponent<EnemyAI>().isInCombat(false);
