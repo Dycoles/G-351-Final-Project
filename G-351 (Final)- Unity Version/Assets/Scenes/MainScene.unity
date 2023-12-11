@@ -29728,7 +29728,6 @@ MonoBehaviour:
   corgiBite: {fileID: 8300000, guid: 992f02a360970436c9bb3892292f5cd1, type: 3}
   corgiHeal: {fileID: 8300000, guid: caeb443ce61e44650a05c0d1b278c28b, type: 3}
   corgiScratch: {fileID: 8300000, guid: 450531be31efd4cc49d8cbda2c41a482, type: 3}
-  dragonRoar: {fileID: 0}
   dragonAttack: {fileID: 0}
 --- !u!4 &1752996263
 Transform:

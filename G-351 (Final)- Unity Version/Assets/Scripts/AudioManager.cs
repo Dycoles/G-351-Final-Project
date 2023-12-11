@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip corgiBite;
     public AudioClip corgiHeal;
     public AudioClip corgiScratch;
-    public AudioClip dragonRoar;
+    //public AudioClip dragonRoar;
     public AudioClip dragonAttack;
 
     //public AudioClip fightMusic;
