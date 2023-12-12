@@ -20,7 +20,7 @@ public class Character : MonoBehaviour
     // added by Dylan Coles
     private Animator mAnimator;
 
-    private bool dragon = false;
+    public bool dragon;
     private bool inCombat = false;
     
     // added by Jennifer
@@ -32,6 +32,10 @@ public class Character : MonoBehaviour
     void Start()
     {
         currentHealth = 10;
+        if (dragon == true)
+        {
+            currentHealth = 25;
+        }
         HUDElement.SetActive(false);
         
         healthBar.SetMaxHealth(currentHealth);
@@ -168,10 +172,7 @@ public class Character : MonoBehaviour
 
     public void startBattle(Character opponent){
         Debug.Log("Starting battle");
-        if (dragon == true)
-        {
-            currentHealth = 50;
-        }
+
         state = BattleState.PLAYERTURN;
 
         HUDElement.SetActive(true);
