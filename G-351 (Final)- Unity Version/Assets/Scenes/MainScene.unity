@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.004632371, g: 0.013389184, b: 0.022507926, a: 1}
+  m_IndirectSpecularColor: {r: 0.0045625693, g: 0.0133931395, b: 0.022419646, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -30563,7 +30563,7 @@ MonoBehaviour:
   corgiBite: {fileID: 8300000, guid: 992f02a360970436c9bb3892292f5cd1, type: 3}
   corgiHeal: {fileID: 8300000, guid: caeb443ce61e44650a05c0d1b278c28b, type: 3}
   corgiScratch: {fileID: 8300000, guid: 450531be31efd4cc49d8cbda2c41a482, type: 3}
-  dragonAttack: {fileID: 0}
+  dragonAttack: {fileID: 8300000, guid: 1ee474bf032f84f638f14d55a857a3dd, type: 3}
   blobAttack: {fileID: 8300000, guid: 3dd324b81a4f84e9eac752303ac399bc, type: 3}
 --- !u!4 &1752996263
 Transform:
