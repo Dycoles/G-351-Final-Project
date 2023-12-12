@@ -26,6 +26,9 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    // added by Jennifer
+    AudioManager audioManager;
+
     private void Start(){
         inCombat = false;
     }
@@ -35,6 +38,8 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         mAnimator = GetComponent<Animator>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
     }
 
     private void Update()
@@ -57,6 +62,8 @@ public class EnemyAI : MonoBehaviour
         }
         if (playerInSightRange && playerInAttackRange)
         {
+            //change JGG
+            audioManager.PlayBlobSFX(audioManager.blobAttack);
             AttackPlayer();
             mAnimator.SetTrigger("Attack");
             // Debug.Log("Attacking");
