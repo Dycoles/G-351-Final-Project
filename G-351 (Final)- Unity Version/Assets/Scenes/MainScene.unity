@@ -6412,6 +6412,7 @@ MonoBehaviour:
   opp: {fileID: 0}
   me: {fileID: 375362016}
   healthBar: {fileID: 432041180}
+  dragon: 0
 --- !u!136 &375362023
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11256,6 +11257,7 @@ MonoBehaviour:
   opp: {fileID: 0}
   me: {fileID: 635404406}
   healthBar: {fileID: 432041180}
+  dragon: 1
 --- !u!114 &635404415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11286,6 +11288,20 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   isDead: 0
+--- !u!136 &635404417
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635404406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 6
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &637485946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14447,6 +14463,7 @@ MonoBehaviour:
   opp: {fileID: 0}
   me: {fileID: 799352062}
   healthBar: {fileID: 1364844666}
+  dragon: 0
 --- !u!1001 &809322904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15299,6 +15316,7 @@ MonoBehaviour:
   opp: {fileID: 0}
   me: {fileID: 837122945}
   healthBar: {fileID: 1384884419}
+  dragon: 0
 --- !u!195 &837122948
 NavMeshAgent:
   m_ObjectHideFlags: 0
