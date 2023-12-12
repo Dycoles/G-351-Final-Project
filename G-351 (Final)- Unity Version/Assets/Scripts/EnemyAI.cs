@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour
 
     // added by Jennifer
     AudioManager audioManager;
+    public bool isDead = false;
 
     private void Start(){
         inCombat = false;
@@ -63,7 +64,7 @@ public class EnemyAI : MonoBehaviour
         if (playerInSightRange && playerInAttackRange)
         {
             //change JGG
-            audioManager.PlayBlobSFX(audioManager.blobAttack);
+            //audioManager.PlayBlobSFX(audioManager.blobAttack);
             AttackPlayer();
             mAnimator.SetTrigger("Attack");
             // Debug.Log("Attacking");
@@ -120,6 +121,8 @@ public class EnemyAI : MonoBehaviour
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
+        audioManager.StartFighting();
+        audioManager.PlayBlobSFX(audioManager.blobAttack);
         agent.SetDestination(transform.position);
         transform.LookAt(player);
 
@@ -144,12 +147,20 @@ public class EnemyAI : MonoBehaviour
 
         if (health <= 0)
         {
+            isDead = true;
+            audioManager.EndFighting();
             Invoke(nameof(DestroyEnemey), 2f);
         }
     }
 
     private void DestroyEnemey()
     {
+        // Stop fighting song when the enemy is destroyed
+        if (isDead)
+        {
+            audioManager.EndFighting();
+        }
+
         Destroy(gameObject);
     }
 

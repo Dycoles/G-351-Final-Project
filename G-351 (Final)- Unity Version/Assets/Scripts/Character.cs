@@ -37,7 +37,7 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1)){
+        if(Input.GetKeyDown(KeyCode.Alpha1) && state == BattleState.PLAYERTURN && opp.health() > 0){
             if(state == BattleState.PLAYERTURN){
                 //change JGG
                 audioManager.PlaySFX(audioManager.corgiScratch);
@@ -53,7 +53,7 @@ public class Character : MonoBehaviour
                 state = BattleState.ENEMYTURN;
             }
         }
-        if(Input.GetKeyDown(KeyCode.Alpha2)){
+        if(Input.GetKeyDown(KeyCode.Alpha2) && state == BattleState.PLAYERTURN && opp.health() > 0){
             if(state == BattleState.PLAYERTURN){
                 //change JGG
                 audioManager.PlaySFX(audioManager.corgiBite);
@@ -68,7 +68,7 @@ public class Character : MonoBehaviour
                 state = BattleState.ENEMYTURN;
             }
         }
-        if(Input.GetKeyDown(KeyCode.Alpha3)){
+        if(Input.GetKeyDown(KeyCode.Alpha3) && state == BattleState.PLAYERTURN && opp.health() > 0){
             if(state == BattleState.PLAYERTURN){
                 //change JGG
                 audioManager.PlaySFX(audioManager.corgiHeal);
@@ -83,7 +83,7 @@ public class Character : MonoBehaviour
                 state = BattleState.ENEMYTURN;
             }
         }
-        if(Input.GetKeyDown(KeyCode.Alpha4)){
+        if(Input.GetKeyDown(KeyCode.Alpha4) && state == BattleState.PLAYERTURN && opp.health() > 0){
             if(state == BattleState.PLAYERTURN){
                 //change JGG
                 //audioManager.PlaySFX(audioManager.corgiRun);

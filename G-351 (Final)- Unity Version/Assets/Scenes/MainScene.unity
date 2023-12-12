@@ -21656,7 +21656,7 @@ AudioSource:
   m_GameObject: {fileID: 1178189881}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8597104739721866953, guid: a8bec28cea2104c5b92ea57d5a95db0d,
+  OutputAudioMixerGroup: {fileID: 751842030769259781, guid: a8bec28cea2104c5b92ea57d5a95db0d,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -30531,6 +30531,7 @@ MonoBehaviour:
   SFXSource: {fileID: 2076479910}
   blobSFX: {fileID: 1178189882}
   background: {fileID: 8300000, guid: 410a8d2acb1c24389b9af03d505e59fa, type: 3}
+  fightingBackground: {fileID: 8300000, guid: af63c58e3b0a14953b75ec0680bb298b, type: 3}
   corgiBite: {fileID: 8300000, guid: 992f02a360970436c9bb3892292f5cd1, type: 3}
   corgiHeal: {fileID: 8300000, guid: caeb443ce61e44650a05c0d1b278c28b, type: 3}
   corgiScratch: {fileID: 8300000, guid: 450531be31efd4cc49d8cbda2c41a482, type: 3}
