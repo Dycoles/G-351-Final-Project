@@ -20,7 +20,7 @@ public class Character : MonoBehaviour
     // added by Dylan Coles
     private Animator mAnimator;
 
-
+    private bool dragon = false;
     private bool inCombat = false;
     
     // added by Jennifer
@@ -108,8 +108,16 @@ public class Character : MonoBehaviour
         if(state == BattleState.ENEMYTURN){
             Debug.Log("Enemys turn");
             Debug.Log(this.health());
-            int randomNumber = Random.Range(0,4);
-            this.damagePlayer(randomNumber);
+            if (dragon == true)
+            {
+                int randomNumber = Random.Range(1, 4);
+                this.damagePlayer(randomNumber);
+            }
+            else
+            {
+                int randomNumber = Random.Range(0, 4);
+                this.damagePlayer(randomNumber);
+            }
             Debug.Log(this.health());
             if(this.health() <= 0){
                 Destroy(this.me);
@@ -121,7 +129,8 @@ public class Character : MonoBehaviour
 
 
     void OnTriggerEnter(Collider other){
-        if(other.gameObject.tag == "Enemy"){
+        if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "Dragon")
+        {
             if(inCombat == false){
                 state = BattleState.START;
                 EnemyAI enemy = other.GetComponent<EnemyAI>();
@@ -132,7 +141,12 @@ public class Character : MonoBehaviour
                 enemy.isInCombat(true);
                 Debug.Log("Hit an enemy!!! FIGHT!");
                 this.GetComponent<MovementDragon>().moveBack();
+                if (other.gameObject.tag == "Dragon")
+                {
+                    dragon = true;
+                }
                 startBattle(opp);
+
             }
         }
     }
@@ -154,7 +168,10 @@ public class Character : MonoBehaviour
 
     public void startBattle(Character opponent){
         Debug.Log("Starting battle");
-
+        if (dragon == true)
+        {
+            currentHealth = 50;
+        }
         state = BattleState.PLAYERTURN;
 
         HUDElement.SetActive(true);
@@ -168,6 +185,7 @@ public class Character : MonoBehaviour
         state = BattleState.OVERWORLD;
         HUDElement.SetActive(false);
         inCombat = false;
+        dragon = false;
         audioManager.EndFighting();
     }
     public void ranAway(){

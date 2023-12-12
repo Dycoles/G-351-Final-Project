@@ -25,11 +25,17 @@ public class dragonPatrol : MonoBehaviour
     // Sound trigger distance
     public float soundTriggerDistance = 5f;
 
+    // added by Jennifer
+    AudioManager audioManager;
+    public bool isDead = false;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         mAnimator = GetComponent<Animator>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
     }
 
     private void Update()
@@ -105,6 +111,8 @@ public class dragonPatrol : MonoBehaviour
 
         if (health <= 0)
         {
+            isDead = true;
+            audioManager.EndFighting();
             Invoke(nameof(DestroyEnemy), 2f);
         }
     }
