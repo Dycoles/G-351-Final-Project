@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
     // added by Jennifer
     private void Awake() {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        mAnimator = GetComponent<Animator>();
+        mAnimator = this.GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -40,8 +40,9 @@ public class Character : MonoBehaviour
 
     private IEnumerator wait()
     {
-        yield return new WaitForSecondsRealtime(2);
-
+        Debug.Log("waiting");
+        yield return new WaitForSeconds(2);
+        Debug.Log("done");
     }
 
     // Update is called once per frame
@@ -52,14 +53,11 @@ public class Character : MonoBehaviour
                 //change JGG
                 audioManager.PlaySFX(audioManager.corgiScratch);
                 mAnimator.SetTrigger("Attack");
-
                 Debug.Log("SCRATCH");
                 Debug.Log(opp.health());
                 opp.damagePlayer(3);
                 Debug.Log(opp.health());
                 if(opp.health() <= 0){
-                    mAnimator.SetTrigger("Die");
-                    StartCoroutine(wait());
                     Destroy(opp.me);
                     endBattle();
                 }
@@ -76,8 +74,6 @@ public class Character : MonoBehaviour
                 opp.damagePlayer(5);
                 Debug.Log(opp.health());
                 if(opp.health() <= 0){
-                    mAnimator.SetTrigger("Die");
-                    StartCoroutine(wait());
                     Destroy(opp.me);
                     endBattle();
                 }
@@ -94,8 +90,6 @@ public class Character : MonoBehaviour
                 healPlayer(2);
                 Debug.Log(opp.health());
                 if(opp.health() <= 0){
-                    mAnimator.SetTrigger("Die");
-                    StartCoroutine(wait());
                     Destroy(opp.me);
                     endBattle();
                 }
@@ -175,7 +169,8 @@ public class Character : MonoBehaviour
         myMovement.isInCombat(false);
         state = BattleState.OVERWORLD;
         HUDElement.SetActive(false);
-            audioManager.EndFighting();
+        inCombat = false;
+        audioManager.EndFighting();
     }
     public void ranAway(){
         inCombat = false;
