@@ -87,6 +87,8 @@ public class dragonPatrol : MonoBehaviour
     private void AttackPlayer()
     {
         // Make sure enemy doesn't move
+        audioManager.StartFighting();
+        audioManager.PlayBlobSFX(audioManager.dragonAttack);
         agent.SetDestination(transform.position);
         transform.LookAt(player);
 
@@ -119,6 +121,11 @@ public class dragonPatrol : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        // Stop fighting song when the enemy is destroyed
+        if (isDead)
+        {
+            audioManager.EndFighting();
+        }
         Destroy(gameObject);
     }
 
