@@ -17,12 +17,16 @@ public class Character : MonoBehaviour
     
     // added by Jennifer
     AudioManager audioManager;
-    
+    // added by Dylan Coles
+    private Animator mAnimator;
+
+
     private bool inCombat = false;
     
     // added by Jennifer
     private void Awake() {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        mAnimator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -34,6 +38,12 @@ public class Character : MonoBehaviour
         healthBar.SetMaxHealth(currentHealth);
     }
 
+    private IEnumerator wait()
+    {
+        yield return new WaitForSecondsRealtime(2);
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -41,12 +51,15 @@ public class Character : MonoBehaviour
             if(state == BattleState.PLAYERTURN){
                 //change JGG
                 audioManager.PlaySFX(audioManager.corgiScratch);
+                mAnimator.SetTrigger("Attack");
 
                 Debug.Log("SCRATCH");
                 Debug.Log(opp.health());
                 opp.damagePlayer(3);
                 Debug.Log(opp.health());
                 if(opp.health() <= 0){
+                    mAnimator.SetTrigger("Die");
+                    StartCoroutine(wait());
                     Destroy(opp.me);
                     endBattle();
                 }
@@ -57,11 +70,14 @@ public class Character : MonoBehaviour
             if(state == BattleState.PLAYERTURN){
                 //change JGG
                 audioManager.PlaySFX(audioManager.corgiBite);
+                mAnimator.SetTrigger("Attack");
                 Debug.Log("BITE");
                 Debug.Log(opp.health());
                 opp.damagePlayer(5);
                 Debug.Log(opp.health());
                 if(opp.health() <= 0){
+                    mAnimator.SetTrigger("Die");
+                    StartCoroutine(wait());
                     Destroy(opp.me);
                     endBattle();
                 }
@@ -72,11 +88,14 @@ public class Character : MonoBehaviour
             if(state == BattleState.PLAYERTURN){
                 //change JGG
                 audioManager.PlaySFX(audioManager.corgiHeal);
+                mAnimator.SetTrigger("Attack");
                 Debug.Log("HEAL");
                 Debug.Log(opp.health());
-                this.healPlayer(2);
+                healPlayer(2);
                 Debug.Log(opp.health());
                 if(opp.health() <= 0){
+                    mAnimator.SetTrigger("Die");
+                    StartCoroutine(wait());
                     Destroy(opp.me);
                     endBattle();
                 }
@@ -156,6 +175,7 @@ public class Character : MonoBehaviour
         myMovement.isInCombat(false);
         state = BattleState.OVERWORLD;
         HUDElement.SetActive(false);
+            audioManager.EndFighting();
     }
     public void ranAway(){
         inCombat = false;
