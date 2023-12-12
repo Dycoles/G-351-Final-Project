@@ -26,7 +26,6 @@ public class Character : MonoBehaviour
     // added by Jennifer
     private void Awake() {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        mAnimator = this.GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -38,13 +37,6 @@ public class Character : MonoBehaviour
         healthBar.SetMaxHealth(currentHealth);
     }
 
-    private IEnumerator wait()
-    {
-        Debug.Log("waiting");
-        yield return new WaitForSeconds(2);
-        Debug.Log("done");
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -52,6 +44,8 @@ public class Character : MonoBehaviour
             if(state == BattleState.PLAYERTURN){
                 //change JGG
                 audioManager.PlaySFX(audioManager.corgiScratch);
+                // animator stuff
+                mAnimator = opp.me.GetComponent<Animator>();
                 mAnimator.SetTrigger("Attack");
                 Debug.Log("SCRATCH");
                 Debug.Log(opp.health());
@@ -68,6 +62,8 @@ public class Character : MonoBehaviour
             if(state == BattleState.PLAYERTURN){
                 //change JGG
                 audioManager.PlaySFX(audioManager.corgiBite);
+                // animator stuff
+                mAnimator = opp.me.GetComponent<Animator>();
                 mAnimator.SetTrigger("Attack");
                 Debug.Log("BITE");
                 Debug.Log(opp.health());
@@ -84,6 +80,8 @@ public class Character : MonoBehaviour
             if(state == BattleState.PLAYERTURN){
                 //change JGG
                 audioManager.PlaySFX(audioManager.corgiHeal);
+                // animator stuff
+                mAnimator = opp.me.GetComponent<Animator>();
                 mAnimator.SetTrigger("Attack");
                 Debug.Log("HEAL");
                 Debug.Log(opp.health());
