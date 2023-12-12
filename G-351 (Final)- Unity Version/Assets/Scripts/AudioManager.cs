@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     [Header("------ Audio Source ---------")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
+    [SerializeField] AudioSource blobSFX;
 
 
 
@@ -17,6 +18,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip corgiScratch;
     //public AudioClip dragonRoar;
     public AudioClip dragonAttack;
+    public AudioClip blobAttack;
+
 
     //public AudioClip fightMusic;
 
@@ -30,5 +33,10 @@ public class AudioManager : MonoBehaviour
     // 
     public void PlaySFX(AudioClip clip){
         SFXSource.PlayOneShot(clip);
+    }
+
+    public void PlayBlobSFX(AudioClip clip)
+    {
+        blobSFX.PlayOneShot(clip);
     }
 }
